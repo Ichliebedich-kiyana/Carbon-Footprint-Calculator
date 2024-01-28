@@ -1,0 +1,107 @@
+<!-- 碳足迹计算结果 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Carbon Footprint Calculator - Result</title>
+    <meta property="og:title" content="Carbon Footprint Calculator" />
+    <meta
+      property="og:description"
+      content="Calculate and reduce your carbon footprint."
+    />
+    <meta property="og:image" content="Images/logo.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <link rel="icon" href="Images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./cdn/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./CSS/result.css" />
+    <!-- 引入chart图标展示碳足迹计算结果 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- 为PWA添加清单文件 -->
+    <link rel="manifest" href="manifest.json" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="index.html">碳足迹计算器</a>
+    </nav>
+
+    <div class="container">
+      <div class="result-card card">
+        <h5 class="card-header">您的碳足迹结算结果</h5>
+        <div class="card-body">
+          <canvas id="chart"></canvas>
+          <h1 class="card-title" id="emissionsValue"></h1>
+          <p class="card-text">千克二氧化碳</p>
+          <p class="card-text" id="comparisonText"></p>
+
+          <div class="share-buttons">
+            <a class="btn btn-primary" href="javascript:;" target="_self">
+              <i class="fab fa-facebook-f"></i> 分享到QQ
+            </a>
+            <a
+              class="btn btn-success"
+              id="whatsappShareBtn"
+              href="javascript:;"
+              data-action="share/whatsapp/share"
+              target="_self"
+            >
+              <i class="fab fa-whatsapp"></i> 分享到微信
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="result-card card">
+        <h5 class="card-header text-center">记住您的碳足迹</h5>
+        <div class="card-body text-center">
+          <p class="card-text">
+            <a href="index.html" class="btn btn-info">返回主页</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="result-card card">
+        <h5 class="card-header">减少碳足迹的小贴士</h5>
+        <div class="card-body">
+          <ul class="card-text">
+            <li>使用节能电器和灯泡</li>
+            <li>减少、再利用和回收废物</li>
+            <li>出行时尽可能选择公共交通工具、骑自行车或步行</li>
+            <li>多吃植物性食物和本地食物</li>
+            <li>宣传我们的网页,让更多人了解碳足迹（づ￣3￣）づ╭❤️～</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="logo-container">
+        <img src="Images/footLog1.png" alt="Logo" />
+      </div>
+      <div class="container text-center">
+        <hr />
+        <p>
+          了解更多(👉ﾟヮﾟ)👉&nbsp;
+          <a
+            href="https://zh.wikipedia.org/zh-cn/%E7%A2%B3%E8%B6%B3%E8%B7%A1"
+            target="_blank"
+            >维基百科</a
+          ><br />
+          &copy; 2023 GUET
+        </p>
+      </div>
+    </footer>
+
+    <script src="./JS/result.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

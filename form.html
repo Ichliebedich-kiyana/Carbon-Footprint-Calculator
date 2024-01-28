@@ -1,0 +1,258 @@
+<!-- 碳足迹计算界面 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Carbon Footprint Calculator - Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- 打开图形元标签 -->
+    <meta property="og:title" content="Carbon Footprint Calculator" />
+    <meta
+      property="og:description"
+      content="Calculate and reduce your carbon footprint."
+    />
+    <meta property="og:image" content="Images/logo.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <link rel="icon" href="Images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./cdn/bootstrap.min.css" />
+    <link rel="stylesheet" href="./cdn/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./CSS/form.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="index.html">碳足迹计算器</a>
+    </nav>
+
+    <div class="container">
+      <br />
+      <h1 class="display-4" style="font-size: 40px">
+        <b>碳足迹计算器</b>
+      </h1>
+      <hr />
+      <h6>根据实际情况填写下列各模块的的数据，确认全部填写完后再提交</h6>
+      <h6><b>月度记录</b></h6>
+      <hr />
+      <!-- 第一行 -->
+      <div class="parameter-buttons">
+        <!-- 电按钮（以这个按钮为例，其他按钮代码不在给出） -->
+        <button
+          type="button"
+          class="btn btn-warning"
+          data-toggle="button"
+          aria-pressed="false"
+          autocomplete="off"
+          onclick="toggleForm('electricity')"
+        >
+          <!-- 图标引入 -->
+          <i class="fa fa-bolt"></i> 电能
+        </button>
+        <!-- 小车按钮 -->
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-toggle="button"
+          aria-pressed="false"
+          autocomplete="off"
+          onclick="toggleForm('car')"
+        >
+          <i class="fa fa-car"></i> 小车
+        </button>
+        <!-- 自行车按钮 -->
+        <button
+          type="button"
+          class="btn btn-success"
+          data-toggle="button"
+          aria-pressed="false"
+          autocomplete="off"
+          onclick="toggleForm('bike')"
+        >
+          <i class="fa fa-bicycle"></i> 自行车
+        </button>
+      </div>
+      <!-- 第二行 -->
+      <div class="parameter-buttons">
+        <!-- 肉按钮 -->
+        <button
+          type="button"
+          class="btn btn-info"
+          data-toggle="button"
+          aria-pressed="false"
+          autocomplete="off"
+          onclick="toggleForm('meat')"
+        >
+          <i class="fa fa-utensils"></i> 肉
+        </button>
+        <!-- 乳制品按钮 -->
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="button"
+          aria-pressed="false"
+          autocomplete="off"
+          onclick="toggleForm('dairy')"
+        >
+          <i class="fa fa-cheese"></i> 乳制品
+        </button>
+      </div>
+      <!-- 第三行 -->
+      <div class="parameter-buttons">
+        <!-- 浪费的按钮 -->
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-toggle="button"
+          aria-pressed="false"
+          autocomplete="off"
+          onclick="toggleForm('waste')"
+        >
+          <i class="fas fa-trash"></i> 浪费的
+        </button>
+        <!-- 回收的按钮 -->
+        <button
+          type="button"
+          class="btn btn-success"
+          data-toggle="button"
+          aria-pressed="false"
+          autocomplete="off"
+          onclick="toggleForm('recycling')"
+        >
+          <i class="fas fa-recycle"></i> 回收的
+        </button>
+      </div>
+      <hr />
+
+      <!-- 计算模块 -->
+      <form id="carbonForm" style="display: none">
+        <!-- 计算电，以此计算界面为例，其他按钮的计算界面代码不重复给出 -->
+        <div class="form-group" id="electricityForm">
+          <label for="electricityConsumption">用电量(千瓦时)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="electricityConsumption"
+            placeholder="请输入您的用电量"
+          />
+        </div>
+
+        <!-- 计算小车 -->
+        <div class="form-group" id="carForm">
+          <label for="carDistance">汽车行驶距离(公里)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="carDistance"
+            placeholder="请输入汽车行驶距离"
+          />
+          <label for="carMileage">行驶油耗(公里/升)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="carMileage"
+            placeholder="请输入汽车每公里油耗"
+          />
+          <label for="carFuel">汽车燃料类型</label>
+          <select class="form-control" id="carFuel">
+            <option value="petrol">汽油</option>
+            <option value="diesel">柴油</option>
+          </select>
+        </div>
+
+        <!-- 计算自行车 -->
+        <div class="form-group" id="bikeForm">
+          <label for="bikeDistance">骑行距离(公里)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="bikeDistance"
+            placeholder="请输入自行车骑行距离"
+          />
+          <label for="bikeMileage">自行车的燃油效率（公里/升）</label
+          ><i class="fas fa-question-circle" id="explain"></i>
+          <input
+            type="text"
+            class="form-control"
+            id="bikeMileage"
+            placeholder="请输入自行车的燃油效率（公里/升）"
+          />
+          <input type="hidden" id="bikeFuel" value="petrol" />
+        </div>
+
+        <!-- 计算肉 -->
+        <div class="form-group" id="meatForm">
+          <label for="meatConsumption"> 肉类消费量(公斤)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="meatConsumption"
+            placeholder="请输入您的肉消耗量"
+          />
+        </div>
+
+        <!-- 计算乳制品 -->
+        <div class="form-group" id="dairyForm">
+          <label for="dairyConsumption">乳制品消费量(公斤)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dairyConsumption"
+            placeholder="请您输入乳制品消费量（公斤）"
+          />
+        </div>
+
+        <!-- 计算浪费的 -->
+        <div class="form-group" id="wasteForm">
+          <label for="wasteGeneration">废物产生量(公斤)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="wasteGeneration"
+            placeholder="请您输入废物产生量"
+          />
+        </div>
+
+        <!-- 计算回收的 -->
+        <div class="form-group" id="recyclingForm">
+          <label for="recyclingAmount">回收废物量(公斤)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="recyclingAmount"
+            placeholder="请输入回收废物量"
+          />
+        </div>
+
+        <div class="prompt-text">
+          请输入所有适用于您的参数，然后单击计算按钮，得到碳排放结果。
+        </div>
+
+        <button type="submit" class="btn btn-primary calculate-button">
+          计算
+        </button>
+      </form>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <footer class="footer">
+      <div class="container text-center">
+        <p>
+          了解更多(👉ﾟヮﾟ)👉&nbsp;
+          <a
+            href="https://zh.wikipedia.org/zh-cn/%E7%A2%B3%E8%B6%B3%E8%B7%A1"
+            target="_blank"
+            >维基百科</a
+          ><br />
+          &copy; 2023 GUET
+        </p>
+      </div>
+    </footer>
+
+    <script src="./cdn/bootstrap.min.js"></script>
+    <!-- 计算碳足迹脚本引入 -->
+    <script src="./JS/form.js"></script>
+  </body>
+</html>
